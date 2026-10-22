@@ -1,4 +1,4 @@
-# ⚡ Cyberpunk Systems Portfolio — Babu S Gouri
+# Portfolio — Babu S Gouri
 
 [![GitHub repo](https://img.shields.io/badge/GitHub-Babu556--tech%2Fportfolio-10b981?style=for-the-badge&logo=github)](https://github.com/Babu556-tech/portfolio)
 [![Tech Stack](https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20Vanilla%20JS-3b82f6?style=for-the-badge)](https://github.com/Babu556-tech/portfolio)
