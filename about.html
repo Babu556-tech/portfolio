@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About // Babu - Systems & Security Software Engineer</title>
+  <meta name="description" content="About Babu — Computer Science and Engineering student at RV College of Engineering.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-default-view="about">
+  <div class="cyber-grid-bg"></div>
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="scanlines" id="scanlinesOverlay"></div>
+  <canvas id="matrixCanvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:997;display:none;"></canvas>
+
+  <header class="telemetry-bar">
+    <div class="telemetry-left">
+      <span class="status-indicator">SEC_NODE: RVCE_ALPHA</span>
+      <span class="telemetry-tag">PAGE: <span>ABOUT.HTML</span></span>
+      <span class="telemetry-tag">TIMESTAMP: <span id="utcClock">--:--:-- UTC</span></span>
+    </div>
+    <div class="telemetry-right">
+      <span class="telemetry-tag">CPU: <span id="cpuMetric">14.2%</span></span>
+      <span class="telemetry-tag">RAM: <span id="ramMetric">1.48 GB</span></span>
+      <button class="tele-btn" id="audioToggleBtn">🔊 Audio: ON</button>
+      <button class="tele-btn active" id="scanlineToggleBtn">📺 CRT: ON</button>
+      <button class="tele-btn" id="themeToggleBtn">🎨 HUD: Emerald</button>
+    </div>
+  </header>
+
+  <nav class="cyber-nav">
+    <div class="nav-container">
+      <a href="index.html#home" class="logo-area">
+        <div class="logo-box">B</div>
+        <div class="logo-text">
+          <div class="logo-title">BABU<span class="cursor">_</span></div>
+          <div class="logo-sub">RVCE // CSE (2025–2029)</div>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#home" class="nav-link"><span class="nav-idx">01</span>// HOME</a></li>
+        <li><a href="about.html" class="nav-link active"><span class="nav-idx">02</span>// ABOUT</a></li>
+        <li><a href="skills.html" class="nav-link"><span class="nav-idx">03</span>// SKILLS</a></li>
+        <li><a href="projects.html" class="nav-link"><span class="nav-idx">04</span>// PROJECTS</a></li>
+        <li><a href="experience.html" class="nav-link"><span class="nav-idx">05</span>// EXPERIENCE</a></li>
+        <li><a href="contact.html" class="nav-link"><span class="nav-idx">06</span>// CONTACT</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="terminal-toggle-btn" id="terminalToggleBtn">&gt;_ CLI TERMINAL</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-wrapper">
+    <div class="section-header">
+      <div class="section-pretitle">02 // PROFILE SPECIFICATIONS</div>
+      <h1 class="section-title">About Babu</h1>
+      <p class="section-desc">Academic background, engineering philosophy, and technical motivations.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="cyber-card">
+        <div class="card-corner card-corner-tl"></div>
+        <div class="card-corner card-corner-br"></div>
+        <div class="about-narrative">
+          <p>
+            I am a <strong>Computer Science and Engineering</strong> student at <strong>RV College of Engineering (2025–2029)</strong>, passionate about software development, systems engineering, and cybersecurity.
+          </p>
+          <p>
+            I enjoy building practical applications, understanding how software works internally, and solving problems through code. My interests include backend development, data structures and algorithms, secure application design, operating systems, and robotics.
+          </p>
+          <p>
+            My goal is to become a strong software engineer by combining solid computer science fundamentals with hands-on project development.
+          </p>
+
+          <div class="cyber-callout">
+            &gt; "Understanding software from memory layout to network sockets is the only way to build systems that don't break under pressure."
+          </div>
+        </div>
+      </div>
+
+      <div class="about-specs">
+        <div class="cyber-card">
+          <h3 style="font-family:var(--font-mono); font-size:1rem; color:var(--accent-green); margin-bottom:1rem;">
+            SYSTEM_METADATA.JSON
+          </h3>
+          <div class="spec-list">
+            <div class="spec-item">
+              <span class="spec-key">🏛 Institution:</span>
+              <span class="spec-val">RV College of Engg.</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-key">🎓 Degree:</span>
+              <span class="spec-val">B.E. in CSE</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-key">📅 Batch:</span>
+              <span class="spec-val">2025 – 2029</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-key">📍 Location:</span>
+              <span class="spec-val">Bengaluru, India</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-key">🔐 Focus:</span>
+              <span class="spec-val">Systems & Security</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-key">⚡ Status:</span>
+              <span class="spec-val" style="color:var(--accent-green);">Open to SWE Internships</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="terminal-drawer" id="terminalDrawer">
+    <div class="terminal-header">
+      <div class="term-title"><span>⚡</span> BABU_CLI_SYSTEM // SHELL CONSOLE</div>
+      <div class="term-actions">
+        <button class="term-btn" id="termClearBtn">Clear</button>
+        <button class="term-btn" id="termCloseBtn">Close [ESC/`]</button>
+      </div>
+    </div>
+    <div class="terminal-screen" id="terminalScreen">
+      <div class="term-output green">Terminal session loaded on about.html. Type <span class="cyan">help</span> or <span class="cyan">skills</span>.</div>
+    </div>
+    <div class="terminal-prompt-line">
+      <span class="prompt-sym">&gt;</span>
+      <span class="prompt-user">babu-node:~$</span>
+      <input type="text" id="terminalInput" class="terminal-input" placeholder="Type a command..." autocomplete="off">
+    </div>
+  </aside>
+
+  <footer class="cyber-footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>System Node: RVCE-BLR-01 // Babu Portfolio</div>
+        <div>GitHub: <a href="https://github.com/Babu556-tech" target="_blank" style="color:var(--accent-green); text-decoration:none;">@Babu556-tech</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/audio.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babu // Systems & Security Software Engineer</title>
+  <meta name="description"
+    content="Portfolio of Babu — Computer Science and Engineering student at RV College of Engineering. Focused on Systems Engineering, Backend Development, and Cybersecurity.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22><text y=%2226%22 font-size=%2226%22>⚡</text></svg>">
+</head>
+
+<body>
+
+  <!-- Ambient Grids & Glows -->
+  <div class="cyber-grid-bg"></div>
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="scanlines" id="scanlinesOverlay"></div>
+
+  <!-- Fullscreen Matrix Canvas Overlay (Toggleable via CLI 'matrix') -->
+  <canvas id="matrixCanvas"
+    style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:997;display:none;"></canvas>
+
+  <!-- Telemetry / Status Bar -->
+  <header class="telemetry-bar">
+    <div class="telemetry-left">
+      <span class="status-indicator">SEC_NODE: about_me</span>
+      <span class="telemetry-tag">LOCATION: <span>BENGALURU, IN</span></span>
+      <span class="telemetry-tag">TIMESTAMP: <span id="utcClock">--:--:-- UTC</span></span>
+    </div>
+    <div class="telemetry-right">
+      <span class="telemetry-tag">CPU: <span id="cpuMetric">14.2%</span></span>
+      <span class="telemetry-tag">RAM: <span id="ramMetric">1.48 GB</span></span>
+      <span class="telemetry-tag">PING: <span id="pingMetric">16ms</span></span>
+      <button class="tele-btn" id="audioToggleBtn" title="Toggle Synthesized Audio FX">🔊 Audio: ON</button>
+      <button class="tele-btn active" id="scanlineToggleBtn" title="Toggle Scanline Simulation">📺 CRT: ON</button>
+      <button class="tele-btn" id="themeToggleBtn" title="Cycle Color Mode">🎨 HUD: Emerald</button>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="cyber-nav">
+    <div class="nav-container">
+      <a href="#home" class="logo-area" data-view="home">
+        <div class="logo-box">B</div>
+        <div class="logo-text">
+          <div class="logo-title">BABU S GOURI<span class="cursor">_</span></div>
+          <div class="logo-sub">RVCE // CSE (2025–2029)</div>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active" data-view="home"><span class="nav-idx">01</span>// HOME</a></li>
+        <li><a href="#about" class="nav-link" data-view="about"><span class="nav-idx">02</span>// ABOUT</a></li>
+        <li><a href="#skills" class="nav-link" data-view="skills"><span class="nav-idx">03</span>// SKILLS</a></li>
+        <li><a href="#projects" class="nav-link" data-view="projects"><span class="nav-idx">04</span>// PROJECTS</a>
+        </li>
+        <li><a href="#experience" class="nav-link" data-view="experience"><span class="nav-idx">05</span>//
+            EXPERIENCE</a></li>
+        <li><a href="#contact" class="nav-link" data-view="contact"><span class="nav-idx">06</span>// CONTACT</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="terminal-toggle-btn" id="terminalToggleBtn" title="Open Interactive Hacker CLI (Key: ~)">
+          <span>&gt;_</span> CLI TERMINAL
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Viewports -->
+  <main class="main-wrapper">
+
+    <!-- ==================== VIEW 1: HOME / HERO ==================== -->
+    <section class="view-section active" id="view-home">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-tagline">
+            <span>●</span> SYSTEMS
+          </div>
+          <h1 class="hero-title">
+            Engineering <span class="name-highlight">Resilient</span> Software Systems.
+          </h1>
+          <div class="hero-subtitle">
+            Babu — CSE Undergraduate @ RV College of Engineering
+          </div>
+          <p class="hero-bio">
+            Passionate about backend architectures, algorithm design, operating systems, and cryptography.
+            Combining core computer science fundamentals with hands-on development to engineer secure, high-throughput
+            digital systems.
+          </p>
+
+          <div class="hero-badges">
+            <div class="hero-badge">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+              </svg>
+              RVCE 2025–2029
+            </div>
+            <div class="hero-badge">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+              </svg>
+              Zero-Knowledge & Crypto
+            </div>
+            <div class="hero-badge">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+              </svg>
+              ROS 2 & Robotics
+            </div>
+            <div class="hero-badge">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A7 7 0 0 1 5.07 11H5a1 1 0 0 1 0-2h.07A7 7 0 0 1 11 3.07V3a1 1 0 0 1 2 0v.07A7 7 0 0 1 18.93 9H19a1 1 0 0 1 0 2h-.07A7 7 0 0 1 13 16.93z" />
+              </svg>
+              Bengaluru, India
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#projects" class="cyber-btn cyber-btn-primary nav-action-route" data-view="projects">
+              ⚡ EXPLORE PROJECTS
+            </a>
+            <a href="#contact" class="cyber-btn cyber-btn-secondary nav-action-route" data-view="contact">
+              📡 ESTABLISH CONTACT
+            </a>
+            <button class="cyber-btn cyber-btn-ghost" onclick="window.cyberTerminal.open()">
+              &gt;_ LAUNCH CLI
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Side: Telemetry Terminal Display -->
+        <div class="hero-telemetry-box">
+          <div class="telemetry-box-head">
+            <div class="window-dots">
+              <div class="window-dot dot-red"></div>
+              <div class="window-dot dot-yellow"></div>
+              <div class="window-dot dot-green"></div>
+            </div>
+            <div class="box-title">KERNEL_SYS_MONITOR // v2.6.4</div>
+            <div style="font-size:0.65rem; color:var(--accent-green);">AUTH: OK</div>
+          </div>
+          <div class="telemetry-box-body">
+            <div class="code-stream">
+              <div class="code-line">
+                <span class="line-num">01</span>
+                <span class="line-content"><span class="comment">// Target Student Profile</span></span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">02</span>
+                <span class="line-content"><span class="key">const</span> engineer = {</span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">03</span>
+                <span class="line-content">&nbsp;&nbsp;name: <span class="str">"Babu"</span>,</span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">04</span>
+                <span class="line-content">&nbsp;&nbsp;college: <span class="str">"RV College of
+                    Engineering"</span>,</span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">05</span>
+                <span class="line-content">&nbsp;&nbsp;tenure: <span class="val">"2025 - 2029"</span>,</span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">06</span>
+                <span class="line-content">&nbsp;&nbsp;focus: [<span class="str">"Systems"</span>, <span
+                    class="str">"Cybersecurity"</span>, <span class="str">"DSA"</span>],</span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">07</span>
+                <span class="line-content">&nbsp;&nbsp;status: <span
+                    class="str">"OPEN_FOR_SWE_INTERNSHIPS"</span></span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">08</span>
+                <span class="line-content">};</span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">09</span>
+                <span class="line-content"><span class="key">function</span> <span
+                    class="str">buildSecureFuture</span>() {</span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">10</span>
+                <span class="line-content">&nbsp;&nbsp;<span class="val">return</span> engineer.combine(fundamentals,
+                  handsOn);</span>
+              </div>
+              <div class="code-line">
+                <span class="line-num">11</span>
+                <span class="line-content">}</span>
+              </div>
+            </div>
+
+            <div class="live-metrics-grid">
+              <div class="metric-cell">
+                <div class="metric-name">Active Projects</div>
+                <div class="metric-value">04 <small>CONFIRMED</small></div>
+              </div>
+              <div class="metric-cell">
+                <div class="metric-name">Security Level</div>
+                <div class="metric-value">ALPHA <small>AES-256</small></div>
+              </div>
+              <div class="metric-cell">
+                <div class="metric-name">Core Languages</div>
+                <div class="metric-value">C/C++/Py <small>+ Java</small></div>
+              </div>
+              <div class="metric-cell">
+                <div class="metric-name">Hackathon Rank</div>
+                <div class="metric-value">VectorX <small>CloneFest</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== VIEW 2: ABOUT ==================== -->
+    <section class="view-section" id="view-about">
+      <div class="section-header">
+        <div class="section-pretitle">02 // PROFILE SPECIFICATIONS</div>
+        <h2 class="section-title">About the Engineer</h2>
+        <p class="section-desc">Academic background, engineering philosophy, and technical motivations.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="cyber-card">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+
+          <div class="about-narrative">
+            <p>
+              I am a <strong>Computer Science and Engineering</strong> student at <strong>RV College of Engineering
+                (2025–2029)</strong>, passionate about software development, systems engineering, and cybersecurity.
+            </p>
+            <p>
+              I enjoy building practical applications, understanding how software works internally, and solving complex
+              problems through high-performance code. My interests lie at the intersection of backend architectures,
+              data structures and algorithms, secure application design, operating systems, and robotics.
+            </p>
+            <p>
+              My goal is to become a strong, versatile software engineer by combining solid computer science
+              fundamentals with vigorous hands-on project development.
+            </p>
+
+            <div class="cyber-callout">
+              &gt; "Understanding software from memory layout to network sockets is the only way to build systems that
+              don't break under pressure."
+            </div>
+          </div>
+        </div>
+
+        <div class="about-specs">
+          <div class="cyber-card">
+            <h3 style="font-family:var(--font-mono); font-size:1rem; color:var(--accent-green); margin-bottom:1rem;">
+              SYSTEM_METADATA.JSON
+            </h3>
+            <div class="spec-list">
+              <div class="spec-item">
+                <span class="spec-key"><span>🏛</span> Institution:</span>
+                <span class="spec-val">RV College of Engg.</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key"><span>🎓</span> Degree:</span>
+                <span class="spec-val">B.E. in CSE</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key"><span>📅</span> Graduation:</span>
+                <span class="spec-val">2029 Batch</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key"><span>📍</span> Node Location:</span>
+                <span class="spec-val">Bengaluru, India</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key"><span>🔐</span> Domain Interest:</span>
+                <span class="spec-val">Security & Systems</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-key"><span>⚡</span> Availability:</span>
+                <span class="spec-val" style="color:var(--accent-green);">Internships / Collabs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cyber-card" style="background:rgba(0, 229, 255, 0.04); border-color:var(--border-cyan);">
+            <div
+              style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-cyan); font-weight:600; margin-bottom:0.4rem;">
+              CORE STACK HIGHLIGHTS
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">
+              C/C++ for low-level performance, Python & FastAPI for rapid backend APIs, JavaFX for algorithmic
+              visualization, and ROS 2 for robotics automation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== VIEW 3: SKILLS ==================== -->
+    <section class="view-section" id="view-skills">
+      <div class="section-header">
+        <div class="section-pretitle">03 // CAPABILITIES INVENTORY</div>
+        <h2 class="section-title">Technical Skill Matrix</h2>
+        <p class="section-desc">Languages, development frameworks, core computer science pillars, and engineering
+          interests.</p>
+      </div>
+
+      <div class="skills-filter-bar">
+        <button class="filter-btn active" data-filter="all">ALL CAPABILITIES</button>
+        <button class="filter-btn" data-filter="languages">LANGUAGES</button>
+        <button class="filter-btn" data-filter="frameworks">FRAMEWORKS & TOOLS</button>
+        <button class="filter-btn" data-filter="cs-core">CORE COMPUTER SCIENCE</button>
+        <button class="filter-btn" data-filter="interests">SPECIALIZED INTERESTS</button>
+      </div>
+
+      <div class="skills-bento-grid">
+        <!-- 1. Languages -->
+        <div class="cyber-card skill-category-card" data-category="languages">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <div class="skill-cat-head">
+            <div class="skill-icon">⌨</div>
+            <div>
+              <div class="skill-cat-title">Programming Languages</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">Compiled &
+                Interpreted</div>
+            </div>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip">C</span>
+            <span class="skill-chip">C++</span>
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">Java</span>
+            <span class="skill-chip">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- 2. Frameworks & Technologies -->
+        <div class="cyber-card skill-category-card" data-category="frameworks">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <div class="skill-cat-head">
+            <div class="skill-icon cyan">⚡</div>
+            <div>
+              <div class="skill-cat-title">Frameworks & Technologies</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">Backend, UI, Devops
+                & Tooling</div>
+            </div>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip">FastAPI</span>
+            <span class="skill-chip">JavaFX</span>
+            <span class="skill-chip">SQLite</span>
+            <span class="skill-chip">PostgreSQL</span>
+            <span class="skill-chip">Vite</span>
+            <span class="skill-chip">Git & GitHub</span>
+            <span class="skill-chip">Linux</span>
+            <span class="skill-chip">Docker</span>
+            <span class="skill-chip">ROS 2</span>
+          </div>
+        </div>
+
+        <!-- 3. Core Computer Science -->
+        <div class="cyber-card skill-category-card" data-category="cs-core">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <div class="skill-cat-head">
+            <div class="skill-icon amber">🧠</div>
+            <div>
+              <div class="skill-cat-title">Core Computer Science</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">Theoretical &
+                Architectural Foundations</div>
+            </div>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip">Data Structures & Algorithms</span>
+            <span class="skill-chip">Object-Oriented Programming</span>
+            <span class="skill-chip">Operating Systems</span>
+            <span class="skill-chip">Database Management Systems</span>
+            <span class="skill-chip">Computer Networks</span>
+            <span class="skill-chip">Cybersecurity Fundamentals</span>
+            <span class="skill-chip">Software Architecture</span>
+          </div>
+        </div>
+
+        <!-- 4. Specialized Interests -->
+        <div class="cyber-card skill-category-card" data-category="interests">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <div class="skill-cat-head">
+            <div class="skill-icon purple">🎯</div>
+            <div>
+              <div class="skill-cat-title">Specialized Interests</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">Applied Research &
+                Exploration</div>
+            </div>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip">Machine Learning</span>
+            <span class="skill-chip">Robotics & Embedded Systems</span>
+            <span class="skill-chip">Reverse Engineering</span>
+            <span class="skill-chip">Secure Software Development</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== VIEW 4: PROJECTS ==================== -->
+    <section class="view-section" id="view-projects">
+      <div class="section-header">
+        <div class="section-pretitle">04 // CODE REPOSITORIES</div>
+        <h2 class="section-title">Engineered Projects</h2>
+        <p class="section-desc">Production prototypes and security architectures built with modern software stacks.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: VaultDrop -->
+        <div class="cyber-card project-card">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <div>
+            <div class="project-head">
+              <div class="project-title">1. VaultDrop</div>
+              <span class="project-status status-deployed">CONFIRMED // SECURE</span>
+            </div>
+            <div class="project-subtitle">Secure Information-Sharing Platform</div>
+            <p class="project-summary">
+              A security-focused information-sharing platform designed around client-side encryption, access control,
+              and zero-knowledge content management.
+            </p>
+            <ul class="feature-bullets">
+              <li>AES-256-GCM client-side cryptographic encryption</li>
+              <li>Zero-knowledge-oriented storage architecture</li>
+              <li>Secure sharing links and instant access revocation</li>
+              <li>Threshold-based secret recovery & tamper-evident audit logging</li>
+              <li>WebAuthn/FIDO2 authentication concepts</li>
+            </ul>
+            <div class="tech-stack-tags">
+              <span class="tech-tag">Go</span>
+              <span class="tech-tag">Vite</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">MinIO</span>
+              <span class="tech-tag">Web Crypto API</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/Babu556-tech/VaultDrop" target="_blank" rel="noopener noreferrer"
+              class="repo-link">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+              GitHub Repo
+            </a>
+            <button class="demo-trigger-btn" data-demo="vaultdrop">
+              ⚡ Live Crypto Sim
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2: DSA Visualizer -->
+        <div class="cyber-card project-card">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <div>
+            <div class="project-head">
+              <div class="project-title">2. DSA Visualizer</div>
+              <span class="project-status status-prototype">CONFIRMED // JAVA</span>
+            </div>
+            <div class="project-subtitle">Interactive Algorithm Learning</div>
+            <p class="project-summary">
+              A JavaFX desktop application engineered to help learners master data structures and algorithms through
+              step-by-step visual demonstrations.
+            </p>
+            <ul class="feature-bullets">
+              <li>Array operations & real-time linear search tracing</li>
+              <li>Step-by-step animated bubble sort</li>
+              <li>Dynamic array insertion and deletion visualization</li>
+              <li>String palindrome verification & character frequency counting</li>
+              <li>Linked-list structural manipulation concepts</li>
+            </ul>
+            <div class="tech-stack-tags">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">JavaFX</span>
+              <span class="tech-tag">OOP</span>
+              <span class="tech-tag">Algorithms</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/Babu556-tech/dsa-visualizer" target="_blank" rel="noopener noreferrer"
+              class="repo-link">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+              GitHub Repo
+            </a>
+            <button class="demo-trigger-btn" data-demo="dsa">
+              📊 Step Visualizer
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3: PyChat -->
+        <div class="cyber-card project-card">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <div>
+            <div class="project-head">
+              <div class="project-title">3. PyChat</div>
+              <span class="project-status status-dev">PROTOTYPE // BACKEND</span>
+            </div>
+            <div class="project-subtitle">Real-Time Messaging Application</div>
+            <p class="project-summary">
+              A personal messaging system project focused on secure user authentication, persistent chat storage, and
+              scalable client-server socket communication.
+            </p>
+            <ul class="feature-bullets">
+              <li>User registration, password hashing & JWT authentication</li>
+              <li>Persistent message storage with relational queries</li>
+              <li>Multi-client synchronized message dispatch</li>
+              <li>Historical message scrollback</li>
+              <li>Lightweight, accessible web-based user interface</li>
+            </ul>
+            <div class="tech-stack-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/Babu556-tech" target="_blank" rel="noopener noreferrer" class="repo-link">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+              GitHub (Publish Pending)
+            </a>
+            <button class="demo-trigger-btn" data-demo="pychat">
+              💬 Socket Sim
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 4: Bangalore Eco-Route Suggester -->
+        <div class="cyber-card project-card">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <div>
+            <div class="project-head">
+              <div class="project-title">4. Eco-Route Suggester</div>
+              <span class="project-status status-prototype">ACADEMIC // ML</span>
+            </div>
+            <div class="project-subtitle">Bangalore Traffic Pollution Modeling</div>
+            <p class="project-summary">
+              An academic prototype analyzing municipal traffic density and air-quality index metrics to recommend
+              environmentally conscious navigation routes.
+            </p>
+            <ul class="feature-bullets">
+              <li>Comprehensive traffic congestion & PM2.5 air-quality analysis</li>
+              <li>Random Forest predictive modeling for emission exposure</li>
+              <li>K-Means clustering of high-pollution transit corridors</li>
+              <li>Offline interactive route comparison dashboard</li>
+            </ul>
+            <div class="tech-stack-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Pandas</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/Babu556-tech" target="_blank" rel="noopener noreferrer" class="repo-link">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+              GitHub (Confirmation Pending)
+            </a>
+            <button class="demo-trigger-btn" data-demo="ecoroute">
+              🌿 Path Calculator
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================== VIEW 5: EXPERIENCE ==================== -->
+    <section class="view-section" id="view-experience">
+      <div class="section-header">
+        <div class="section-pretitle">05 // LOG ENTRIES</div>
+        <h2 class="section-title">Experience & Field Operations</h2>
+        <p class="section-desc">Hackathon deployments, robotics investigations, and academic research initiatives.</p>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Entry 1 -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-date">
+            <span>●</span> RVCE HACKATHON ECOSYSTEM // CLONEFEST 2.0
+          </div>
+          <div class="cyber-card">
+            <div class="timeline-title">Coding Club & Hackathon Participation</div>
+            <div class="timeline-org">RV College of Engineering — Team VectorX</div>
+            <div class="timeline-body">
+              Active contributor in the RVCE coding-club community, collaborating in high-tempo competitive hackathons:
+              <ul>
+                <li>Participated in <strong>CloneFest 2.0</strong> with engineering squad <strong>VectorX</strong>.</li>
+                <li>Collaborated on <strong>VaultDrop</strong>, focusing on zero-knowledge encryption architecture and
+                  secure content distribution.</li>
+                <li>Investigated software resilience, secure access recovery protocols, and clean API design under
+                  hackathon constraints.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 2 -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-date">
+            <span>●</span> EMBEDDED HARDWARE & KINEMATICS // 2025+
+          </div>
+          <div class="cyber-card">
+            <div class="timeline-title">Robotics and Embedded Systems Exploration</div>
+            <div class="timeline-org">Technical Projects and Hands-On Labs</div>
+            <div class="timeline-body">
+              Applied control systems and robotics software development:
+              <ul>
+                <li>Engineered line-following robots utilizing IR sensor arrays, motor drivers, and <strong>PID-based
+                    control algorithms</strong>.</li>
+                <li>Prototyped sensor-driven electronics projects featuring ultrasonic distance sensors, servos, and
+                  signal detection circuits.</li>
+                <li>Explored <strong>ROS 2 (Robot Operating System)</strong> and modern C++ for modular robotics node
+                  communication.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 3 -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-date">
+            <span>●</span> ACADEMIC RESEARCH & COLLABORATIVE LABS
+          </div>
+          <div class="cyber-card">
+            <div class="timeline-title">Academic and Team Projects</div>
+            <div class="timeline-org">RVCE Design Thinking & Static Analysis Investigations</div>
+            <div class="timeline-body">
+              Multi-disciplinary academic initiatives addressing user accessibility and compiler tooling:
+              <ul>
+                <li>Conducted a healthcare accessibility design-thinking study informed by <strong>56 empirical survey
+                    responses</strong>.</li>
+                <li>Explored compiler diagnostics and static analysis mechanisms via the <strong>Compiler Error
+                    Assistant</strong> project.</li>
+                <li>Developed concepts for automated food-label information validation and dietary transparency via
+                  <strong>LabelLens</strong>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================== VIEW 6: CONTACT ==================== -->
+    <section class="view-section" id="view-contact">
+      <div class="section-header">
+        <div class="section-pretitle">06 // SECURE UPLINK</div>
+        <h2 class="section-title">Establish Transmission</h2>
+        <p class="section-desc">Connect for software engineering internships, open-source projects, and technical
+          discussions.</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Left: Verified Contact Nodes -->
+        <div class="contact-info-panel">
+
+          <div class="contact-card-item">
+            <div class="contact-item-left">
+              <div class="contact-icon-box">👤</div>
+              <div>
+                <div class="contact-label">Full Name</div>
+                <div class="contact-value">Babu</div>
+              </div>
+            </div>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-green);">VERIFIED_ID</span>
+          </div>
+
+          <div class="contact-card-item">
+            <div class="contact-item-left">
+              <div class="contact-icon-box">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+              </div>
+              <div>
+                <div class="contact-label">GitHub Repository</div>
+                <div class="contact-value">github.com/Babu556-tech</div>
+              </div>
+            </div>
+            <a href="https://github.com/Babu556-tech" target="_blank" rel="noopener noreferrer"
+              class="cyber-btn cyber-btn-ghost" style="padding:0.35rem 0.65rem; font-size:0.75rem;">
+              ↗ Visit
+            </a>
+          </div>
+
+          <div class="contact-card-item">
+            <div class="contact-item-left">
+              <div class="contact-icon-box">📍</div>
+              <div>
+                <div class="contact-label">Base Location</div>
+                <div class="contact-value">Bengaluru, Karnataka, India</div>
+              </div>
+            </div>
+            <button class="copy-btn" data-copy="Bengaluru, India">Copy</button>
+          </div>
+
+          <div class="contact-card-item">
+            <div class="contact-item-left">
+              <div class="contact-icon-box">💼</div>
+              <div>
+                <div class="contact-label">Professional Network</div>
+                <div class="contact-value">LinkedIn Profile</div>
+              </div>
+            </div>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="cyber-btn cyber-btn-ghost" style="padding:0.35rem 0.65rem; font-size:0.75rem;">
+              Connect
+            </a>
+          </div>
+
+          <div class="status-badge-open">
+            <h4><span>⚡</span> CURRENT AVAILABILITY</h4>
+            <p>
+              Actively seeking <strong>Software Engineering Internships</strong>, systems engineering roles, and
+              open-source contributions. Ready to learn, build, and deploy.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Right: Encrypted Transmission Form -->
+        <div class="cyber-card">
+          <div class="card-corner card-corner-tl"></div>
+          <div class="card-corner card-corner-br"></div>
+          <h3
+            style="font-family:var(--font-mono); font-size:1.15rem; color:var(--text-highlight); margin-bottom:0.25rem;">
+            Send Encrypted Dispatch
+          </h3>
+          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1.5rem;">
+            Transmissions are formatted with client-side verification and integrity checksums.
+          </p>
+
+          <form id="transmissionForm" class="transmission-form">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Sender Identity / Name <span>[Required]</span></label>
+              <input type="text" id="contactName" placeholder="e.g. Recruiter / Collaborator" class="cyber-input"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">Return Transmission Endpoint (Email)
+                <span>[Required]</span></label>
+              <input type="email" id="contactEmail" placeholder="your.name@company.com" class="cyber-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">Encrypted Payload Content <span>[Payload]</span></label>
+              <textarea id="contactMessage" placeholder="Detail opportunity, internship specs, or technical inquiry..."
+                class="cyber-textarea" required></textarea>
+            </div>
+
+            <button type="submit" id="btnSubmitTransmission" class="cyber-btn cyber-btn-primary"
+              style="justify-content:center; padding:0.85rem;">
+              ⚡ DISPATCH SECURE TRANSMISSION
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Terminal Drawer (Quake Style, press ~ or click CLI Terminal) -->
+  <aside class="terminal-drawer" id="terminalDrawer">
+    <div class="terminal-header">
+      <div class="term-title">
+        <span>⚡</span> BABU_CLI_SYSTEM_V2.1 // SHELL CONSOLE
+      </div>
+      <div class="term-actions">
+        <button class="term-btn" id="termClearBtn">Clear</button>
+        <button class="term-btn" id="termCloseBtn">Close [ESC/`]</button>
+      </div>
+    </div>
+    <div class="terminal-screen" id="terminalScreen">
+      <div class="term-output green">===============================================================</div>
+      <div class="term-output green"> BABU CYBER SYSTEM TERMINAL (ALPHA SECURITY LEVEL)</div>
+      <div class="term-output green"> RV College of Engineering — Computer Science (2025–2029)</div>
+      <div class="term-output green">===============================================================</div>
+      <div class="term-output">Type <span class="cyan">help</span> to view available system commands or <span
+          class="cyan">goto projects</span>.</div>
+    </div>
+    <div class="terminal-prompt-line">
+      <span class="prompt-sym">&gt;</span>
+      <span class="prompt-user">babu-node:~$</span>
+      <input type="text" id="terminalInput" class="terminal-input"
+        placeholder="Type a command (try 'help', 'about', 'skills', 'projects', 'theme')..." autocomplete="off"
+        spellcheck="false">
+    </div>
+  </aside>
+
+  <!-- Interactive Project Demo Modal -->
+  <div class="modal-overlay" id="demoModal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Project Demonstration</div>
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Footer -->
+  <footer class="cyber-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div>
+          <div style="font-family:var(--font-mono); font-weight:700; color:var(--text-highlight); font-size:1.1rem;">
+            BABU // RVCE CSE
+          </div>
+          <div style="font-size:0.8rem; color:var(--text-secondary); margin-top:2px;">
+            Software Development • Systems Engineering • Cybersecurity
+          </div>
+        </div>
+        <div style="display:flex; gap:1.25rem; font-family:var(--font-mono); font-size:0.8rem;">
+          <a href="#about" class="nav-action-route" data-view="about"
+            style="color:var(--text-secondary); text-decoration:none;">About</a>
+          <a href="#skills" class="nav-action-route" data-view="skills"
+            style="color:var(--text-secondary); text-decoration:none;">Skills</a>
+          <a href="#projects" class="nav-action-route" data-view="projects"
+            style="color:var(--text-secondary); text-decoration:none;">Projects</a>
+          <a href="#contact" class="nav-action-route" data-view="contact"
+            style="color:var(--text-secondary); text-decoration:none;">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>System Node: RVCE-BLR-01 // Built with Vanilla CSS, Clean HTML & Web Audio API</div>
+        <div>GitHub: <a href="https://github.com/Babu556-tech" target="_blank" rel="noopener noreferrer"
+            style="color:var(--accent-green); text-decoration:none;">@Babu556-tech</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

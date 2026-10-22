@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects // Babu - Systems & Security Software Engineer</title>
+  <meta name="description" content="Projects by Babu — VaultDrop, DSA Visualizer, PyChat, Bangalore Eco-Route Suggester.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-default-view="projects">
+  <div class="cyber-grid-bg"></div>
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="scanlines" id="scanlinesOverlay"></div>
+
+  <header class="telemetry-bar">
+    <div class="telemetry-left">
+      <span class="status-indicator">SEC_NODE: RVCE_ALPHA</span>
+      <span class="telemetry-tag">PAGE: <span>PROJECTS.HTML</span></span>
+      <span class="telemetry-tag">TIMESTAMP: <span id="utcClock">--:--:-- UTC</span></span>
+    </div>
+    <div class="telemetry-right">
+      <span class="telemetry-tag">CPU: <span id="cpuMetric">14.2%</span></span>
+      <span class="telemetry-tag">RAM: <span id="ramMetric">1.48 GB</span></span>
+      <button class="tele-btn" id="audioToggleBtn">🔊 Audio: ON</button>
+      <button class="tele-btn active" id="scanlineToggleBtn">📺 CRT: ON</button>
+      <button class="tele-btn" id="themeToggleBtn">🎨 HUD: Emerald</button>
+    </div>
+  </header>
+
+  <nav class="cyber-nav">
+    <div class="nav-container">
+      <a href="index.html#home" class="logo-area">
+        <div class="logo-box">B</div>
+        <div class="logo-text">
+          <div class="logo-title">BABU<span class="cursor">_</span></div>
+          <div class="logo-sub">RVCE // CSE (2025–2029)</div>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#home" class="nav-link"><span class="nav-idx">01</span>// HOME</a></li>
+        <li><a href="about.html" class="nav-link"><span class="nav-idx">02</span>// ABOUT</a></li>
+        <li><a href="skills.html" class="nav-link"><span class="nav-idx">03</span>// SKILLS</a></li>
+        <li><a href="projects.html" class="nav-link active"><span class="nav-idx">04</span>// PROJECTS</a></li>
+        <li><a href="experience.html" class="nav-link"><span class="nav-idx">05</span>// EXPERIENCE</a></li>
+        <li><a href="contact.html" class="nav-link"><span class="nav-idx">06</span>// CONTACT</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="terminal-toggle-btn" id="terminalToggleBtn">&gt;_ CLI TERMINAL</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-wrapper">
+    <div class="section-header">
+      <div class="section-pretitle">04 // CODE REPOSITORIES</div>
+      <h1 class="section-title">Engineered Projects</h1>
+      <p class="section-desc">Production prototypes and security architectures built with modern software stacks.</p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 1: VaultDrop -->
+      <div class="cyber-card project-card">
+        <div class="card-corner card-corner-tl"></div>
+        <div class="card-corner card-corner-br"></div>
+        <div>
+          <div class="project-head">
+            <div class="project-title">1. VaultDrop</div>
+            <span class="project-status status-deployed">CONFIRMED // SECURE</span>
+          </div>
+          <div class="project-subtitle">Secure Information-Sharing Platform</div>
+          <p class="project-summary">
+            A security-focused information-sharing platform designed around client-side encryption, access control, and zero-knowledge content management.
+          </p>
+          <ul class="feature-bullets">
+            <li>AES-256-GCM client-side cryptographic encryption</li>
+            <li>Zero-knowledge-oriented storage architecture</li>
+            <li>Secure sharing links and instant access revocation</li>
+            <li>Threshold-based secret recovery & tamper-evident audit logging</li>
+            <li>WebAuthn/FIDO2 authentication concepts</li>
+          </ul>
+          <div class="tech-stack-tags">
+            <span class="tech-tag">Go</span>
+            <span class="tech-tag">Vite</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">MinIO</span>
+            <span class="tech-tag">Web Crypto API</span>
+          </div>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/Babu556-tech/VaultDrop" target="_blank" rel="noopener noreferrer" class="repo-link">GitHub Repo</a>
+          <button class="demo-trigger-btn" data-demo="vaultdrop">⚡ Live Crypto Sim</button>
+        </div>
+      </div>
+
+      <!-- Project 2: DSA Visualizer -->
+      <div class="cyber-card project-card">
+        <div class="card-corner card-corner-tl"></div>
+        <div class="card-corner card-corner-br"></div>
+        <div>
+          <div class="project-head">
+            <div class="project-title">2. DSA Visualizer</div>
+            <span class="project-status status-prototype">CONFIRMED // JAVA</span>
+          </div>
+          <div class="project-subtitle">Interactive Algorithm Learning</div>
+          <p class="project-summary">
+            A JavaFX desktop application engineered to help learners master data structures and algorithms through step-by-step visual demonstrations.
+          </p>
+          <ul class="feature-bullets">
+            <li>Array operations & real-time linear search tracing</li>
+            <li>Step-by-step animated bubble sort</li>
+            <li>Dynamic array insertion and deletion visualization</li>
+            <li>String palindrome verification & character frequency counting</li>
+            <li>Linked-list structural manipulation concepts</li>
+          </ul>
+          <div class="tech-stack-tags">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JavaFX</span>
+            <span class="tech-tag">Algorithms</span>
+          </div>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/Babu556-tech/dsa-visualizer" target="_blank" rel="noopener noreferrer" class="repo-link">GitHub Repo</a>
+          <button class="demo-trigger-btn" data-demo="dsa">📊 Step Visualizer</button>
+        </div>
+      </div>
+
+      <!-- Project 3: PyChat -->
+      <div class="cyber-card project-card">
+        <div class="card-corner card-corner-tl"></div>
+        <div class="card-corner card-corner-br"></div>
+        <div>
+          <div class="project-head">
+            <div class="project-title">3. PyChat</div>
+            <span class="project-status status-dev">PROTOTYPE // BACKEND</span>
+          </div>
+          <div class="project-subtitle">Real-Time Messaging Application</div>
+          <p class="project-summary">
+            A personal messaging system project focused on secure user authentication, persistent chat storage, and scalable client-server socket communication.
+          </p>
+          <ul class="feature-bullets">
+            <li>User registration, password hashing & JWT authentication</li>
+            <li>Persistent message storage with relational queries</li>
+            <li>Multi-client synchronized message dispatch</li>
+            <li>Historical message scrollback</li>
+          </ul>
+          <div class="tech-stack-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">SQLite</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/Babu556-tech" target="_blank" rel="noopener noreferrer" class="repo-link">GitHub (Pending)</a>
+          <button class="demo-trigger-btn" data-demo="pychat">💬 Socket Sim</button>
+        </div>
+      </div>
+
+      <!-- Project 4: Bangalore Eco-Route Suggester -->
+      <div class="cyber-card project-card">
+        <div class="card-corner card-corner-tl"></div>
+        <div class="card-corner card-corner-br"></div>
+        <div>
+          <div class="project-head">
+            <div class="project-title">4. Eco-Route Suggester</div>
+            <span class="project-status status-prototype">ACADEMIC // ML</span>
+          </div>
+          <div class="project-subtitle">Bangalore Traffic Pollution Modeling</div>
+          <p class="project-summary">
+            An academic prototype analyzing municipal traffic density and air-quality index metrics to recommend environmentally conscious navigation routes.
+          </p>
+          <ul class="feature-bullets">
+            <li>Comprehensive traffic congestion & PM2.5 air-quality analysis</li>
+            <li>Random Forest predictive modeling for emission exposure</li>
+            <li>K-Means clustering of high-pollution transit corridors</li>
+          </ul>
+          <div class="tech-stack-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Pandas</span>
+          </div>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/Babu556-tech" target="_blank" rel="noopener noreferrer" class="repo-link">GitHub (Pending)</a>
+          <button class="demo-trigger-btn" data-demo="ecoroute">🌿 Path Calculator</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="demoModal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Project Demonstration</div>
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <aside class="terminal-drawer" id="terminalDrawer">
+    <div class="terminal-header">
+      <div class="term-title"><span>⚡</span> BABU_CLI_SYSTEM // SHELL CONSOLE</div>
+      <div class="term-actions">
+        <button class="term-btn" id="termClearBtn">Clear</button>
+        <button class="term-btn" id="termCloseBtn">Close [ESC/`]</button>
+      </div>
+    </div>
+    <div class="terminal-screen" id="terminalScreen">
+      <div class="term-output green">Terminal session loaded on projects.html. Type <span class="cyan">projects</span> or <span class="cyan">help</span>.</div>
+    </div>
+    <div class="terminal-prompt-line">
+      <span class="prompt-sym">&gt;</span>
+      <span class="prompt-user">babu-node:~$</span>
+      <input type="text" id="terminalInput" class="terminal-input" placeholder="Type a command..." autocomplete="off">
+    </div>
+  </aside>
+
+  <footer class="cyber-footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>System Node: RVCE-BLR-01 // Babu Portfolio</div>
+        <div>GitHub: <a href="https://github.com/Babu556-tech" target="_blank" style="color:var(--accent-green); text-decoration:none;">@Babu556-tech</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/audio.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
